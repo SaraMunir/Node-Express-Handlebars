@@ -51,7 +51,6 @@
                     burger_name: $('#burgerInput').val(),
                     devoured: 0
                 };
-
                 // console.log(myBurger);
                 const apiResult = await $.post( '/api/burger', myBurger );
                 $('#burgerInput').val('')
