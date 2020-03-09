@@ -11,6 +11,9 @@
             body {
                 background-color: #ecb349;
             }
+            .burgerImg {
+                filter: drop-shadow(5px 8px 6px rgb(122, 36, 21));
+            }
             .box1 {
                 width: 100%;
                 /* background-color: darkolivegreen; */
@@ -83,17 +86,17 @@
         </script>
         <div class="container">
             <div class="container col">
-                <img src="assets/burger-vector-png-3-transparent.png" class="img-fluid row mx-auto" alt="" style="max-width: 200px;">
+                <img src="assets/burger-vector-png-3-transparent.png" class="img-fluid row mx-auto burgerImg" alt="" style="max-width: 200px;">
                 <h1 class="display-4 text-center">Devour the Burger</h1>
             </div>
         </div>
         <div class="container mainSection" >
             <div class="col-lg-6 mx-auto text-center box2">
-                <div  class="input-group mb-3">
-                    <input type="text" id="burgerInput" class="col form-control centreBtn" placeholder="Add burger">
+                <div  class="input-group mb-3 text-center" >
+                    <input type="text" id="burgerInput" class="col form-control centreBtn text-center" placeholder="Add burger">
                 </div>
                 <div  class="input-group mb-3">
-                    <input type="submit" id="submitBtn" class="col form-control centreBtn btn btn-outline-secondary">
+                    <input type="submit" id="submitBtn" class="col form-control centreBtn btn btn-outline-secondary ">
                 </div>                
             </div>
             <div class="row d-flex justify-content-center">
