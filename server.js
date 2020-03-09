@@ -28,10 +28,6 @@ app.get('/api/devouredBurger', async function (req, res){
     res.send( myDevouredBurgerList );
 })
 
-
-
-
-
 app.listen( PORT, function(){
-    console.log( `[pictures] RUNNING, http://localhost:${PORT}` );
+    console.log( `[burgerLogger] RUNNING, http://localhost:${PORT}` );
 });

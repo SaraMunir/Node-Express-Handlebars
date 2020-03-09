@@ -32,6 +32,17 @@
     <body>
         <script>
             $(document).ready( async function(){
+                const devouredBurger = await $.get( '/api/devouredBurger');
+                $('#devouredBurgers').html("");
+                $('#new_div').appendTo('#original_div').show('slow');
+                
+                devouredBurger.forEach( function(burger){
+                    $('#devouredBurgers').append(`
+                        <div class="input-group mb-3">
+                            <li class="list-group-item disabled col">${burger.burger_name}</li>
+                        </div>
+                        `)
+                    })
             $('#submitBtn').click( async function(event){
                 event.preventDefault();
                 
@@ -40,8 +51,7 @@
                     burger_name: $('#burgerInput').val(),
                     devoured: 0
                 };
-                
-                
+
                 // console.log(myBurger);
                 const apiResult = await $.post( '/api/burger', myBurger );
                 $('#burgerInput').val('')
@@ -50,11 +60,10 @@
                 $('#listBurgersToDevour').html("")
                 myBurgerList.forEach( function(burger){
                     $('#listBurgersToDevour').append(`
-                    <div class="input-group mb-3" id="${burger.id}">
-                        <li class="list-group-item form-control">${burger.burger_name}</li>
+                    <div class="input-group mb-3 " id="${burger.id}">
+                        <li class="list-group-item form-control d-flex justify-content-between"><img src="assets/burger.png" alt="" style="width: 25px;">${burger.burger_name}</li>
                         <div class="input-group-append">
-                        <button class="btn btn-success" type="button" onClick="devourBurger(${burger.id})">
-                            Devour it!!
+                        <button class="btn btn-success" type="button" onClick="devourBurger(${burger.id})">Devour it!!
                         </button>
                         </div>
                     </div>
@@ -69,7 +78,6 @@
             url: `/api/burgerUpdate/${devourIdx}`,
             type: 'PUT'
         });
-
         const devouredBurger = await $.get( '/api/devouredBurger');
         $('#devouredBurgers').html("");
         $('#new_div').appendTo('#original_div').show('slow');
@@ -90,7 +98,7 @@
                 <h1 class="display-4 text-center">Devour the Burger</h1>
             </div>
         </div>
-        <div class="container mainSection" >
+        <div class="container mainSection">
             <div class="col-lg-6 mx-auto text-center box2">
                 <div  class="input-group mb-3 text-center" >
                     <input type="text" id="burgerInput" class="col form-control centreBtn text-center" placeholder="Add burger">
