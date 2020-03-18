@@ -23,14 +23,32 @@ class Database {
             } );
         }
     }
+
+
     // at top INIT DB connection
-const db = new Database({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "1234",
-    database: "burgerLog"
-});
+// const db = new Database({
+//     host: "localhost",
+//     port: 3306,
+//     user: "root",
+//     password: "1234",
+//     database: "burgerLog"
+// });
+
+
+// at top INIT DB connection
+var db;
+if(process.env.JAWSDB_URL){
+    db = new Database(process.env.JAWSDB_URL);
+    console.log('jaws db is connected');
+}else{
+    db = new Database({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "1234", //change 
+        database: "burgerLog"
+    });
+};
 
 async function postBurger(myBurgerPost){
 
